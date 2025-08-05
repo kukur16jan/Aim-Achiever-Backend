@@ -299,10 +299,8 @@ app.post('/api/login', async (req, res) => {
     res.status(400).json({ error: 'Error logging in' });
   }
 });
-
-// TASKS
 app.get('/', async (req, res) => {
-  res.json({message: 'Welcome to AIM Achiver API', tasks });
+  res.json({message: 'Welcome to AIM Achiver API' });
 });
 app.get('/api/tasks/:userId', async (req, res) => {
   const tasks = await Task.find({ userId: req.params.userId });
