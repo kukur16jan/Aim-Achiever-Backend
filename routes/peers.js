@@ -66,7 +66,7 @@ router.post('/invite', async (req, res) => {
     await peerRequest.save();
 
     // Send beautiful email
-    const acceptUrl = `${process.env.FRONTEND_URL}/peers/accept/${token}`;
+    const acceptUrl = `https://aim-achiver-lovat.vercel.app/peers/accept/${token}`;
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: recipientEmail,

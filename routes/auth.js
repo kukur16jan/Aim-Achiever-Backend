@@ -27,7 +27,7 @@ router.post('/forgot-password', async (req, res) => {
       },
     });
 
-    const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+    const resetUrl = `https://aim-achiver-lovat.vercel.app/reset-password/${token}`;
     const mailOptions = {
       to: user.email,
       from: process.env.EMAIL_USER,
@@ -89,14 +89,14 @@ router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login', session: true }),
   (req, res) => {
     // On success, redirect to frontend with user info or token
-    res.redirect(process.env.FRONTEND_URL); // Adjust to your frontend URL
+    res.redirect('https://aim-achiver-lovat.vercel.app'); // Adjust to your frontend URL
   }
 );
 
 // Logout
 router.get('/logout', (req, res) => {
   req.logout(() => {
-    res.redirect(process.env.FRONTEND_URL);
+    res.redirect('https://aim-achiver-lovat.vercel.app');
   });
 });
 
