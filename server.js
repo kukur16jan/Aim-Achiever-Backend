@@ -302,7 +302,6 @@ app.post('/api/login', async (req, res) => {
 
 // TASKS
 app.get('/', async (req, res) => {
-  const tasks = await Task.find({ userId: req.params.userId });
   res.json({message: 'Welcome to AIM Achiver API', tasks });
 });
 app.get('/api/tasks/:userId', async (req, res) => {
