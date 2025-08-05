@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+require('dotenv').config();
 const ensureAuthenticated = require('../middleware/authMiddleware');
 const User = require('../models/User');
 const PeerRequest = require('../models/PeerRequest');

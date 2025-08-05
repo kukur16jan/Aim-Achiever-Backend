@@ -4,6 +4,7 @@ const router = express.Router();
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const User = require('../models/User');
+require('dotenv').config();
 // Forgot Password
 router.post('/forgot-password', async (req, res) => {
   const { email } = req.body;
@@ -26,7 +27,7 @@ router.post('/forgot-password', async (req, res) => {
       },
     });
 
-    const resetUrl = `http://localhost:5173/reset-password/${token}`;
+    const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${token}`;
     const mailOptions = {
       to: user.email,
       from: process.env.EMAIL_USER,
@@ -88,14 +89,14 @@ router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login', session: true }),
   (req, res) => {
     // On success, redirect to frontend with user info or token
-    res.redirect('http://localhost:5173'); // Adjust to your frontend URL
+    res.redirect(process.env.FRONTEND_URL); // Adjust to your frontend URL
   }
 );
 
 // Logout
 router.get('/logout', (req, res) => {
   req.logout(() => {
-    res.redirect('http://localhost:5173/login');
+    res.redirect(process.env.FRONTEND_URL);
   });
 });
 
