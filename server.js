@@ -50,7 +50,7 @@ app.get('/api/tasks/:userId', async (req, res) => {
 const fetchQuizForMicrotask = async (microtaskTitle) => {
   try {
     const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-    const res = await fetch('http://localhost:3000/api/gemini-quiz', {
+    const res = await fetch(`${process.env.FRONTEND_URL}/api/gemini-quiz`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ microtaskTitle })
@@ -126,7 +126,7 @@ app.post('/api/moods/gemini', async (req, res) => {
   try {
     // Call Gemini
     const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-    const geminiRes = await fetch('http://localhost:3000/api/gemini-mood', {
+    const geminiRes = await fetch(`${process.env.FRONTEND_URL}/api/gemini-mood`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ moodInput })
